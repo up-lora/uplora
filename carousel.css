@@ -1,0 +1,84 @@
+/* Carousel (peek + centered arrows) */
+/* :root{ --peek: clamp(16px, 3vw, 36px); } */
+:root { --peek: clamp(24px, 6vw, 72px); }
+
+#projects .reveal { opacity: 1 !important; visibility: visible !important; transform: none !important; }
+
+
+.carousel{
+  position:relative; margin-top:14px; border-radius:16px; overflow:hidden;
+  background:var(--card); border:1px solid var(--border); box-shadow:var(--shadow);
+}
+.carousel::before,.carousel::after{
+  content:""; position:absolute; top:0; bottom:0; width:52px; pointer-events:none; z-index:2;
+}
+.carousel::before{ left:0;  background:linear-gradient(90deg, rgba(0,0,0,.14), rgba(0,0,0,0)); mix-blend:multiply; }
+.carousel::after { right:0; background:linear-gradient(270deg, rgba(0,0,0,.14), rgba(0,0,0,0)); mix-blend:multiply; }
+
+/* .carousel-track{
+  display:flex; will-change:transform; transition:transform 520ms cubic-bezier(.22,.61,.36,1);
+  touch-action:pan-y; gap:0;
+} */
+
+
+
+/* .carousel figure{
+  margin:0 var(--peek);
+  min-width:calc(100% - (var(--peek)*2)); 
+  aspect-ratio:16/9; position:relative; border-radius:12px; overflow:hidden;
+  background:var(--bg-soft); box-shadow:0 10px 28px rgba(2,6,23,.18);
+} */
+
+/* REQUIRED: layout + animation for the track */
+.carousel-track{
+  display:flex;
+  will-change:transform;
+  transition:transform 520ms cubic-bezier(.22,.61,.36,1);
+  touch-action:pan-y;
+  gap:0;
+}
+
+/* REQUIRED: give each slide a height + positioning context */
+.carousel figure{
+  position:relative;
+  aspect-ratio:16/9;      /* 56.25% */
+  margin:0 var(--peek);
+  min-width:calc(100% - (var(--peek) * 2));
+  border-radius:12px;
+  overflow:hidden;
+}
+
+
+
+
+.carousel img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+
+.carousel .nav{
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:space-between;
+  pointer-events:none; z-index:3; /* arrows vertically centered */
+}
+.carousel .nav button{
+  pointer-events:auto; display:inline-flex; align-items:center; justify-content:center;
+  width:46px; height:46px; margin:0 8px; border-radius:999px;
+  border:1px solid var(--border);
+  background:color-mix(in srgb, var(--bg) 55%, transparent);
+  color:var(--fg); box-shadow:0 6px 18px rgba(2,6,23,.15);
+}
+.carousel .nav button:hover{ background:color-mix(in srgb, var(--bg) 75%, transparent); }
+
+.carousel .dots{
+  position:absolute; bottom:10px; left:50%; transform:translateX(-50%);
+  display:flex; gap:8px; padding:6px 10px; border-radius:999px;
+  background:color-mix(in srgb, var(--bg) 65%, transparent);
+  border:1px solid var(--border); z-index:3;
+}
+.carousel .dots button{
+  width:8px; height:8px; border-radius:999px; border:0;
+  background:color-mix(in srgb, var(--fg) 35%, transparent);
+}
+.carousel .dots button[aria-selected="true"]{ background:var(--fg); }
+
+
+@media (max-width: 640px){
+  :root { --peek: 16px; } /* tighter on small screens */
+}
