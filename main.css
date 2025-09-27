@@ -68,9 +68,9 @@
     .mobile-menu-meta .menu-link:hover,
     .mobile-menu-meta .menu-link:focus-visible{color:var(--accent-2)}
     .mobile-menu-divider{display:none; width:100%; height:1px; background:linear-gradient(90deg, transparent, color-mix(in srgb, var(--border) 90%, transparent) 20%, color-mix(in srgb, var(--border) 90%, transparent) 80%, transparent)}
-    .drawer-close{display:none; align-items:center; justify-content:center; padding:6px; border-radius:10px; border:1px solid transparent; background:transparent; color:var(--muted); font-size:26px; line-height:1; cursor:pointer; transition:color .2s ease, background .2s ease}
+    .drawer-close{display:none; align-items:center; justify-content:center; width:44px; height:44px; border-radius:50%; border:none; background:transparent; color:var(--muted); font-size:32px; line-height:1; cursor:pointer; transition:color .2s ease, background .2s ease, transform .2s ease; position:absolute; top:16px; right:16px}
     .drawer-close:hover,
-    .drawer-close:focus-visible{background:color-mix(in srgb, var(--bg) 70%, transparent); color:var(--fg); outline:none}
+    .drawer-close:focus-visible{background:color-mix(in srgb, var(--bg) 70%, transparent); color:var(--fg); outline:none; transform:scale(1.05)}
     .menu-toggle{display:none; align-items:center; justify-content:center; width:42px; height:42px; border-radius:12px; border:1px solid var(--border); background:color-mix(in srgb, var(--bg) 40%, transparent); color:var(--fg); cursor:pointer; transition:background .2s ease}
     .menu-toggle:hover{background:color-mix(in srgb, var(--bg) 60%, transparent)}
     .menu-toggle svg{width:20px; height:20px}
