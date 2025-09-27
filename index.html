@@ -555,6 +555,70 @@
   var carousels = document.querySelectorAll('.carousel');
   if (!carousels.length) return;
 
+  var lightbox      = document.createElement('div');
+  var lightboxInner = document.createElement('div');
+  var lightboxImg   = document.createElement('img');
+  var closeBtn      = document.createElement('button');
+  var activeTrigger = null;
+  var resumeAutoplay = null;
+
+  lightbox.className = 'carousel-lightbox';
+  lightbox.setAttribute('role', 'dialog');
+  lightbox.setAttribute('aria-modal', 'true');
+  lightbox.setAttribute('hidden', '');
+
+  lightboxInner.className = 'carousel-lightbox__inner';
+  lightboxInner.appendChild(lightboxImg);
+
+  closeBtn.type = 'button';
+  closeBtn.className = 'carousel-lightbox__close';
+  closeBtn.innerHTML = '<span aria-hidden="true">&times;</span><span class="visually-hidden">Close image</span>';
+  lightboxInner.appendChild(closeBtn);
+
+  lightbox.appendChild(lightboxInner);
+  document.body.appendChild(lightbox);
+
+  function openLightbox(img, resumeFn) {
+    activeTrigger = img;
+    resumeAutoplay = resumeFn || null;
+    lightboxImg.src = img.currentSrc || img.src;
+    lightboxImg.alt = img.alt || '';
+    lightbox.removeAttribute('hidden');
+    document.body.classList.add('is-lightbox-open');
+    requestAnimationFrame(function () {
+      lightbox.classList.add('is-active');
+      closeBtn.focus();
+    });
+  }
+
+  function closeLightbox() {
+    if (!lightbox.classList.contains('is-active')) return;
+    lightbox.classList.remove('is-active');
+    document.body.classList.remove('is-lightbox-open');
+    if (resumeAutoplay) {
+      resumeAutoplay();
+    }
+    resumeAutoplay = null;
+    if (activeTrigger && activeTrigger.focus) {
+      activeTrigger.focus();
+    }
+    activeTrigger = null;
+  }
+
+  lightbox.addEventListener('transitionend', function (event) {
+    if (event.target !== lightbox || lightbox.classList.contains('is-active')) return;
+    lightbox.setAttribute('hidden', '');
+    lightboxImg.removeAttribute('src');
+  });
+
+  closeBtn.addEventListener('click', function () { closeLightbox(); });
+  lightbox.addEventListener('click', function (event) {
+    if (event.target === lightbox) closeLightbox();
+  });
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') closeLightbox();
+  });
+
   carousels.forEach(function (c) {
     var track   = c.querySelector('.carousel-track');
     var prevBtn = c.querySelector('.prev');
@@ -668,6 +732,22 @@
     requestAnimationFrame(function () {
       slideTo(1, false);
       play();
+    });
+
+    var images = track.querySelectorAll('img');
+    images.forEach(function (img) {
+      img.setAttribute('tabindex', '0');
+      img.addEventListener('click', function () {
+        stop();
+        openLightbox(img, play);
+      });
+      img.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          stop();
+          openLightbox(img, play);
+        }
+      });
     });
   });
 })();
