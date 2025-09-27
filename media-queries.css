@@ -15,7 +15,7 @@
   .desktop-cta{display:none}
   .nav nav{display:none}
   .nav.menu-open::before{content:""; position:fixed; inset:0; background:rgba(15,23,42,0.45); backdrop-filter:blur(6px); z-index:100}
-  .nav.menu-open nav{display:flex; flex-direction:column; gap:18px; position:fixed; inset:0; width:100%; min-height:100vh; padding:calc(var(--nav-height, 68px) + 28px + env(safe-area-inset-top, 0px)) clamp(28px, 9vw, 56px) max(42px, env(safe-area-inset-bottom, 0px) + 24px); border-radius:0; border:none; background:color-mix(in srgb, var(--bg) 94%, transparent); box-shadow:none; max-height:none; overflow:auto; z-index:130; align-items:flex-start; animation:drawer-fade .18s ease-out, drawer-slide .26s var(--ease-smooth) both}
+  .nav.menu-open nav{display:flex; flex-direction:column; gap:18px; position:fixed; inset:0; width:100%; min-height:100vh; padding:calc(var(--nav-height, 68px) + 28px + env(safe-area-inset-top, 0px)) clamp(28px, 9vw, 56px) max(42px, env(safe-area-inset-bottom, 0px) + 24px); border-radius:0; border:none; background:var(--bg); box-shadow:none; max-height:none; overflow:auto; z-index:130; align-items:flex-start; animation:drawer-fade .18s ease-out, drawer-slide .26s var(--ease-smooth) both}
   .nav.menu-open nav ul{display:flex; flex-direction:column; gap:12px; margin:0; padding:0; width:100%}
   .nav.menu-open nav li a{display:block; width:100%; padding:16px 14px; border-radius:16px; font-weight:600; border:1px solid transparent; background:color-mix(in srgb, var(--bg) 62%, transparent); text-align:left; box-shadow:0 8px 24px rgba(15,23,42,0.08)}
   .nav.menu-open nav li a:hover,
@@ -30,6 +30,9 @@
   .nav.menu-open nav .mobile-menu-meta .menu-link{font-size:15px}
   .nav.menu-open nav .mobile-menu-divider{display:block}
   .nav.menu-open nav .mobile-menu-meta .menu-link svg{width:16px; height:16px}
+  .nav.menu-open nav .drawer-close{display:inline-flex; align-self:flex-end; margin:-8px -8px 0 0; border-color:color-mix(in srgb, var(--border) 80%, transparent); color:var(--muted)}
+  .nav.menu-open nav .drawer-close:hover,
+  .nav.menu-open nav .drawer-close:focus-visible{border-color:color-mix(in srgb, var(--accent) 30%, transparent)}
   .grid.cols-2, .grid.cols-3, .grid.cols-4{grid-template-columns:1fr}
   .form-row{grid-template-columns:1fr}
   .hero-cta{flex-direction:column}

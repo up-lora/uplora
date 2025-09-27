@@ -47,8 +47,10 @@
       <nav id="primary-nav">
         <div class="mobile-menu-header" aria-hidden="true">
           <span class="eyebrow">Navigation</span>
-          <p>Jump to the section you need or reach out to start a project.</p>
         </div>
+        <button class="drawer-close" type="button" aria-label="Close navigation">
+          <span aria-hidden="true">&times;</span>
+        </button>
         <ul>
           <li><a href="#about">About</a></li>
           <li><a href="#projects">Projects</a></li>
@@ -61,7 +63,6 @@
         </div>
         <div class="mobile-menu-meta">
           <a class="menu-link" href="mailto:hello@uplora.com">hello@uplora.com</a>
-          <a class="menu-link" href="tel:+15555551234">+1 (555) 555‑1234</a>
         </div>
       </nav>
       <button class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
@@ -446,6 +447,7 @@
     var menu = document.getElementById(menuToggle.getAttribute('aria-controls'));
     if(!menu) return;
     var firstLink = menu.querySelector('a');
+    var closeButton = menu.querySelector('.drawer-close');
     var previousOverflow = '';
 
     function closeMenu(){
@@ -469,6 +471,13 @@
       var isOpen = navContainer.classList.contains('menu-open');
       if(isOpen) closeMenu(); else openMenu();
     });
+
+    if(closeButton){
+      closeButton.addEventListener('click', function(){
+        closeMenu();
+        menuToggle.focus();
+      });
+    }
 
     menu.addEventListener('click', function(evt){
       var target = evt.target;
