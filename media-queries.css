@@ -8,18 +8,28 @@
 @media (max-width: 640px){
   header{border-bottom-width:0}
   .nav{display:flex; align-items:center; gap:12px; justify-content:flex-start; padding:12px clamp(18px, 6vw, 30px); --nav-height:72px}
-  .nav.menu-open{z-index:120}
+  .nav.menu-open{position:fixed; inset:0; width:100%; height:100vh; max-width:none; margin:0; padding:12px clamp(18px, 6vw, 30px); align-items:flex-start; z-index:120}
   .brand{font-size:16px; flex:1; min-width:0}
   .theme-toggle{margin-right:0; margin-left:auto; width:36px; height:36px}
   .menu-toggle{display:inline-flex; width:40px; height:40px}
   .desktop-cta{display:none}
   .nav nav{display:none}
   .nav.menu-open::before{content:""; position:fixed; inset:0; background:rgba(15,23,42,0.45); backdrop-filter:blur(6px); z-index:100}
-  .nav.menu-open nav{display:flex; flex-direction:column; gap:16px; position:fixed; inset:0; padding:calc(var(--nav-height, 68px) + 28px) clamp(28px, 9vw, 56px) 36px; border-radius:0; border:none; background:color-mix(in srgb, var(--bg) 96%, transparent); box-shadow:none; max-height:none; overflow:auto; z-index:130; align-items:flex-start}
+  .nav.menu-open nav{display:flex; flex-direction:column; gap:18px; position:fixed; inset:0; width:100%; min-height:100vh; padding:calc(var(--nav-height, 68px) + 28px + env(safe-area-inset-top, 0px)) clamp(28px, 9vw, 56px) max(42px, env(safe-area-inset-bottom, 0px) + 24px); border-radius:0; border:none; background:color-mix(in srgb, var(--bg) 94%, transparent); box-shadow:none; max-height:none; overflow:auto; z-index:130; align-items:flex-start; animation:drawer-fade .18s ease-out, drawer-slide .26s var(--ease-smooth) both}
   .nav.menu-open nav ul{display:flex; flex-direction:column; gap:12px; margin:0; padding:0; width:100%}
-  .nav.menu-open nav li a{display:block; width:100%; padding:14px 10px; border-radius:14px; font-weight:600; border:1px solid transparent; background:color-mix(in srgb, var(--bg) 62%, transparent); text-align:left}
+  .nav.menu-open nav li a{display:block; width:100%; padding:16px 14px; border-radius:16px; font-weight:600; border:1px solid transparent; background:color-mix(in srgb, var(--bg) 62%, transparent); text-align:left; box-shadow:0 8px 24px rgba(15,23,42,0.08)}
   .nav.menu-open nav li a:hover,
   .nav.menu-open nav li a:focus-visible{background:color-mix(in srgb, var(--accent-2) 18%, transparent); border-color:color-mix(in srgb, var(--accent) 24%, transparent); outline:none}
+  .nav.menu-open nav .mobile-menu-header,
+  .nav.menu-open nav .mobile-menu-cta,
+  .nav.menu-open nav .mobile-menu-meta{display:flex}
+  .nav.menu-open nav .mobile-menu-header{opacity:0.88}
+  .nav.menu-open nav .mobile-menu-cta .cta{width:100%; justify-content:center; text-align:center}
+  .nav.menu-open nav .mobile-menu-cta .cta.mobile-cta{display:inline-flex}
+  .nav.menu-open nav .mobile-menu-meta{color:var(--muted)}
+  .nav.menu-open nav .mobile-menu-meta .menu-link{font-size:15px}
+  .nav.menu-open nav .mobile-menu-divider{display:block}
+  .nav.menu-open nav .mobile-menu-meta .menu-link svg{width:16px; height:16px}
   .grid.cols-2, .grid.cols-3, .grid.cols-4{grid-template-columns:1fr}
   .form-row{grid-template-columns:1fr}
   .hero-cta{flex-direction:column}
@@ -46,4 +56,13 @@
   .lead{font-size:16px}
   .btn-lg{font-size:16px; padding:14px 20px}
   .footer-bottom{font-size:13px}
+}
+
+@keyframes drawer-fade{
+  from{opacity:0}
+  to{opacity:1}
+}
+@keyframes drawer-slide{
+  from{transform:translateY(-16px)}
+  to{transform:translateY(0)}
 }

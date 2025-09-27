@@ -53,6 +53,21 @@
     .cta:hover, .cta:focus-visible{filter:saturate(112%); box-shadow:0 8px 24px rgba(15,76,129,.35)}
     .desktop-cta{margin-left:12px}
     .mobile-cta{display:none}
+    .mobile-menu-header,
+    .mobile-menu-cta,
+    .mobile-menu-meta,
+    .mobile-menu-divider{display:none}
+    .mobile-menu-header{flex-direction:column; gap:6px; color:var(--muted)}
+    .mobile-menu-header .eyebrow{font-size:12px; letter-spacing:0.16em; font-weight:700; text-transform:uppercase; color:var(--accent); opacity:0.8}
+    :root[data-theme="dark"] .mobile-menu-header .eyebrow{color:var(--accent-2)}
+    .mobile-menu-header p{margin:0; font-size:14px; line-height:1.5; color:var(--muted)}
+    .mobile-menu-cta{gap:12px; flex-direction:column}
+    .mobile-menu-cta p{margin:0; font-size:13px; line-height:1.5; color:var(--muted)}
+    .mobile-menu-meta{flex-direction:column; gap:6px; font-size:14px}
+    .mobile-menu-meta .menu-link{display:inline-flex; align-items:center; gap:6px; text-decoration:none; color:var(--fg); font-weight:600}
+    .mobile-menu-meta .menu-link:hover,
+    .mobile-menu-meta .menu-link:focus-visible{color:var(--accent-2)}
+    .mobile-menu-divider{display:none; width:100%; height:1px; background:linear-gradient(90deg, transparent, color-mix(in srgb, var(--border) 90%, transparent) 20%, color-mix(in srgb, var(--border) 90%, transparent) 80%, transparent)}
     .menu-toggle{display:none; align-items:center; justify-content:center; width:42px; height:42px; border-radius:12px; border:1px solid var(--border); background:color-mix(in srgb, var(--bg) 40%, transparent); color:var(--fg); cursor:pointer; transition:background .2s ease}
     .menu-toggle:hover{background:color-mix(in srgb, var(--bg) 60%, transparent)}
     .menu-toggle svg{width:20px; height:20px}
