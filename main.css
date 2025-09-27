@@ -129,7 +129,7 @@
     }
 
     /* Pill icon */
-    .pill .ico{width:16px; height:16px; display:inline-block}
+    .pill .ico{width:16px; height:16px; display:inline-block; color:#4ade80}
 
     /* Cards & Sections */
     section{padding:64px 0; border-top:1px solid var(--border)}
