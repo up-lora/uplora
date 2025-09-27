@@ -2,9 +2,6 @@
 
 :root { --peek: 0px; }
 
-#projects .reveal { opacity: 1 !important; visibility: visible !important; transform: none !important; }
-
-
 .carousel{
   position:relative; margin-top:14px; border-radius:16px; overflow:hidden;
   background:var(--card); border:1px solid var(--border); box-shadow:var(--shadow);

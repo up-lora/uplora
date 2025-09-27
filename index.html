@@ -447,7 +447,7 @@
         });
       }, { rootMargin: '0px 0px -12% 0px', threshold: 0.06 });
 
-      var targets = document.querySelectorAll('#about .section-title, #about .section-sub, #about .chip, #about .pillar, #projects .section-title, #projects .section-sub, #projects .project, #contact .form-card');
+      var targets = document.querySelectorAll('#about .section-title, #about .section-sub, #about .chip, #about .pillar, #projects .section-title, #projects .section-sub, #projects .project, #projects .project-case, #contact .form-card');
       targets.forEach(function(el, i){
         if(!el.classList.contains('reveal')) el.classList.add('reveal','up');
         el.style.transitionDelay = (i % 6) * 60 + 'ms';
