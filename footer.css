@@ -3,7 +3,7 @@
     .footer-top{padding:32px 0 8px}
     .footer-row{display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap}
     .footer-brand .name{font-weight:800; font-size:20px; color:inherit}
-    .footer-brand .tag{color:var(--muted); margin-top:6px}
+    .footer-brand .tag{color:var(--footer-fg); margin-top:6px}
     .footer-icons{display:flex; gap:10px}
     .icon-btn{display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:10px; background:color-mix(in srgb, var(--footer-fg) 12%, transparent); border:1px solid color-mix(in srgb, var(--footer-fg) 26%, transparent); box-shadow:0 10px 24px rgba(2,6,23,.35); transition:transform .15s ease, background .2s ease; color:var(--footer-fg)}
     .icon-btn:hover{background:color-mix(in srgb, var(--footer-fg) 18%, transparent); transform:translateY(-1px)}
