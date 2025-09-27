@@ -180,7 +180,7 @@
     .about-lead{max-width:920px; font-size:clamp(16px,1.5vw,20px)}
     .about-services{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px 14px; margin:18px 0 30px}
     .chip{display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:12px; border:1px solid var(--border); background:color-mix(in srgb, var(--bg) 30%, transparent); font-weight:600}
-    .chip svg{width:16px; height:16px; opacity:.9}
+    .chip svg{width:16px; height:16px; opacity:.9; color:#4ade80}
     .grid.cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}
     .about-pillars{margin-top:8px}
     .pillar{text-align:center; padding:8px}

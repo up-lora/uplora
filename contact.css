@@ -1,5 +1,5 @@
     form{display:grid; gap:12px}
-    label{font-weight:600}
+    label{font-weight:600; display:inline-block; margin-bottom:6px}
     input, textarea{width:100%; padding:16px 14px; min-height:48px; border-radius:12px; background:var(--card); color:var(--fg); border:1px solid var(--border); box-shadow:0 1px 0 rgba(2,6,23,.04)}
     textarea{min-height:140px; padding:18px 14px}
     textarea{min-height:140px; padding:18px 14px}
