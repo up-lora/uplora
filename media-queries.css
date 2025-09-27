@@ -45,8 +45,11 @@
 
 /* Hero size overrides (mobile) */
 @media (max-width: 640px){
-  .hero{min-height:auto}
-  .hero .container{padding:24px 20px 44px}
+  .hero{min-height:auto; overflow:hidden}
+  .hero .container{padding:24px 20px 44px; position:relative}
+  .hero .container .network-card{position:absolute; inset:0; min-height:0; z-index:-1; opacity:.75; pointer-events:none}
+  .hero .container .network-card::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(15,23,42,.12), transparent 55%)}
+  .hero .container .network-canvas{position:absolute; inset:0; width:100%; height:100%}
   .network-card{min-height:320px}
   .cta{width:max-content}
 }
