@@ -37,18 +37,24 @@
   <header>
     <div class="container nav" role="navigation" aria-label="Primary">
       <div class="brand"><img src="assets/uplora-logo.png" alt="Uplora logo" class="logo" /> Uplora</div>
-      <nav>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+        <span class="visually-hidden">Toggle navigation</span>
+        <svg class="menu-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg class="close-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6l-12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <nav id="primary-nav">
         <ul>
           <li><a href="#about">About</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
+        <a class="cta mobile-cta" href="#contact">Work with us</a>
       </nav>
       <button class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
         <svg class="sun" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M12 2v3M12 19v3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M2 12h3M19 12h3M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
         <svg class="moon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.3A9 9 0 1 1 11.7 3a7 7 0 1 0 9.3 9.3Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
-      <a class="cta" href="#contact">Work with us</a>
+      <a class="cta desktop-cta" href="#contact">Work with us</a>
     </div>
   </header>
 
@@ -414,6 +420,66 @@
       });
       sync();
     }
+  })();
+</script>
+
+<script>
+  // Mobile navigation toggle
+  (function(){
+    var navContainer = document.querySelector('.nav');
+    var menuToggle = document.querySelector('.menu-toggle');
+    if(!navContainer || !menuToggle) return;
+    var menu = document.getElementById(menuToggle.getAttribute('aria-controls'));
+    if(!menu) return;
+    var firstLink = menu.querySelector('a');
+    var previousOverflow = '';
+
+    function closeMenu(){
+      navContainer.classList.remove('menu-open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = previousOverflow;
+      navContainer.style.removeProperty('--nav-height');
+    }
+
+    function openMenu(){
+      var rect = navContainer.getBoundingClientRect();
+      navContainer.style.setProperty('--nav-height', rect.height + 'px');
+      previousOverflow = document.body.style.overflow || '';
+      document.body.style.overflow = 'hidden';
+      navContainer.classList.add('menu-open');
+      menuToggle.setAttribute('aria-expanded', 'true');
+      if(firstLink) firstLink.focus();
+    }
+
+    menuToggle.addEventListener('click', function(){
+      var isOpen = navContainer.classList.contains('menu-open');
+      if(isOpen) closeMenu(); else openMenu();
+    });
+
+    menu.addEventListener('click', function(evt){
+      var target = evt.target;
+      if(target && target.closest('a')) closeMenu();
+    });
+
+    document.addEventListener('keydown', function(evt){
+      if(evt.key === 'Escape' && navContainer.classList.contains('menu-open')){
+        evt.preventDefault();
+        closeMenu();
+        menuToggle.focus();
+      }
+    });
+
+    document.addEventListener('click', function(evt){
+      if(!navContainer.classList.contains('menu-open')) return;
+      if(menu.contains(evt.target) || menuToggle.contains(evt.target)) return;
+      closeMenu();
+    });
+
+    window.addEventListener('resize', function(){
+      if(window.innerWidth > 640 && navContainer.classList.contains('menu-open')){
+        closeMenu();
+      }
+    });
   })();
 </script>
 
