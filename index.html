@@ -638,6 +638,8 @@
     var idx = 1; // start on first REAL slide
     var timer = null, inView = true;
     var dragging = false, x0 = 0;
+    var pointerStartImg = null;
+    var pointerType = '';
 
     function marginLeft() {
       var m = window.getComputedStyle(slides[0]).marginLeft;
@@ -702,9 +704,36 @@
     });
 
     // Swipe
-    track.addEventListener('pointerdown', function (e) { dragging = true; x0 = e.clientX; if (track.setPointerCapture) track.setPointerCapture(e.pointerId); stop(); });
-    track.addEventListener('pointerup',   function (e) { if (!dragging) return; dragging = false; var dx = e.clientX - x0; if (Math.abs(dx) > 40) (dx < 0 ? next() : prev()); play(); });
-    track.addEventListener('pointercancel', function () { dragging = false; play(); });
+    track.addEventListener('pointerdown', function (e) {
+      dragging = true;
+      x0 = e.clientX;
+      pointerType = e.pointerType || '';
+      pointerStartImg = e.target && e.target.closest ? e.target.closest('img') : null;
+      if (track.setPointerCapture) track.setPointerCapture(e.pointerId);
+      stop();
+    });
+    track.addEventListener('pointerup',   function (e) {
+      if (!dragging) return;
+      dragging = false;
+      var dx = e.clientX - x0;
+      var action = '';
+      if (Math.abs(dx) > 40) {
+        action = 'slide';
+        (dx < 0 ? next() : prev());
+      } else if (pointerType === 'mouse' && pointerStartImg) {
+        action = 'click';
+        pointerStartImg.click();
+      }
+      if (action !== 'click') play();
+      pointerStartImg = null;
+      pointerType = '';
+    });
+    track.addEventListener('pointercancel', function () {
+      dragging = false;
+      pointerStartImg = null;
+      pointerType = '';
+      play();
+    });
 
     // Pause rules
     c.addEventListener('mouseenter', stop);
