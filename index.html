@@ -11,9 +11,11 @@
     (function(){
       try{
         var stored = localStorage.getItem('theme');
-        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (stored === 'dark' || (stored === null && prefersDark)) document.documentElement.setAttribute('data-theme','dark');
-        else if (stored === 'light') document.documentElement.setAttribute('data-theme','light');
+        if (stored === 'dark'){
+          document.documentElement.setAttribute('data-theme','dark');
+        }else{
+          document.documentElement.setAttribute('data-theme','light');
+        }
       }catch(e){}
     })();
   </script>
@@ -48,7 +50,6 @@
           <li><a href="#projects">Projects</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
-        <a class="cta mobile-cta" href="#contact">Work with us</a>
       </nav>
       <button class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
         <svg class="sun" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M12 2v3M12 19v3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M2 12h3M19 12h3M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
