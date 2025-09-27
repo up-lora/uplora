@@ -7,12 +7,21 @@
 
 @media (max-width: 640px){
   header{border-bottom-width:0}
-  .nav{display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:10px 14px; padding:12px 0}
+  .nav{display:grid; grid-template-columns:auto 1fr auto auto; align-items:center; gap:10px 12px; padding:12px 0; --nav-height:72px}
+  .nav.menu-open{z-index:120}
   .brand{font-size:16px}
-  .theme-toggle{margin-right:0; width:36px; height:36px; justify-self:end}
-  .cta{padding:10px 16px; font-size:15px; justify-self:end}
-  nav ul{display:none}
+  .brand{grid-column:1}
+  .theme-toggle{margin-right:0; width:36px; height:36px; justify-self:end; grid-column:3}
+  .menu-toggle{display:inline-flex; width:40px; height:40px; justify-self:end; grid-column:4}
+  .desktop-cta{display:none}
   .nav nav{display:none}
+  .nav.menu-open::before{content:""; position:fixed; inset:0; background:rgba(15,23,42,0.45); backdrop-filter:blur(6px); z-index:100}
+  .nav.menu-open nav{display:flex; flex-direction:column; gap:12px; position:fixed; top:calc(var(--nav-height, 68px) + 16px); left:16px; right:16px; padding:20px 22px; border-radius:18px; border:1px solid var(--border); background:color-mix(in srgb, var(--bg) 94%, transparent); box-shadow:0 24px 60px rgba(15,23,42,.28); max-height:calc(100vh - var(--nav-height, 68px) - 32px); overflow:auto; z-index:120}
+  .nav.menu-open nav ul{display:flex; flex-direction:column; gap:8px; margin:0; padding:0}
+  .nav.menu-open nav li a{display:block; padding:12px 8px; border-radius:12px; font-weight:600; border:1px solid transparent; background:color-mix(in srgb, var(--bg) 60%, transparent); text-align:center}
+  .nav.menu-open nav li a:hover,
+  .nav.menu-open nav li a:focus-visible{background:color-mix(in srgb, var(--accent-2) 18%, transparent); border-color:color-mix(in srgb, var(--accent) 24%, transparent); outline:none}
+  .nav.menu-open .mobile-cta{display:inline-flex; width:100%; justify-content:center; font-size:16px; padding:14px 20px}
   .grid.cols-2, .grid.cols-3, .grid.cols-4{grid-template-columns:1fr}
   .form-row{grid-template-columns:1fr}
   .hero-cta{flex-direction:column}
@@ -26,14 +35,15 @@
 /* Hero size overrides (mobile) */
 @media (max-width: 640px){
   .hero{min-height:auto}
-  .hero .container{padding:56px 20px}
+  .hero .container{padding:40px 20px}
   .network-card{min-height:320px}
   .cta{width:max-content}
 }
 @media (max-width: 480px){
-  .nav{grid-template-columns:auto auto; grid-template-rows:auto auto}
-  .cta{grid-column:1 / -1; justify-self:stretch; width:100%; text-align:center}
-  .hero .container{padding:48px 16px}
+  .nav{grid-template-columns:auto 1fr auto auto}
+  .theme-toggle{width:34px; height:34px}
+  .menu-toggle{width:38px; height:38px}
+  .hero .container{padding:32px 16px}
   .ring{width:96px; height:96px}
   .lead{font-size:16px}
   .btn-lg{font-size:16px; padding:14px 20px}
