@@ -101,6 +101,8 @@
     .btn.primary:hover{filter:brightness(1.03); transform:translateY(-1.5px); box-shadow:0 20px 40px rgba(15,76,129,.34), 0 4px 10px rgba(2,6,23,.08)}
     .btn.outline{background:color-mix(in srgb, var(--accent-2) 10%, white); color:var(--accent); border:2px solid var(--accent); box-shadow:0 10px 24px rgba(15,76,129,.12)}
     .btn.outline:hover{background:color-mix(in srgb, var(--accent-2) 16%, white)}
+    :root[data-theme="dark"] .btn.outline{background:color-mix(in srgb, var(--bg) 85%, transparent); color:color-mix(in srgb, var(--accent-2) 92%, white); border-color:color-mix(in srgb, var(--accent-2) 70%, transparent); box-shadow:0 14px 30px rgba(8,20,40,.5)}
+    :root[data-theme="dark"] .btn.outline:hover{background:color-mix(in srgb, var(--accent-2) 18%, transparent); box-shadow:0 18px 40px rgba(8,20,40,.55)}
     .btn-lg{padding:16px 26px; font-size:18px}
 
     /* Headline font */
