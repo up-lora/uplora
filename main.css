@@ -227,3 +227,7 @@
 
     /* A11y helpers */
     .visually-hidden{position:absolute !important; height:1px; width:1px; overflow:hidden; clip:rect(1px,1px,1px,1px); white-space:nowrap}
+
+    body.maintenance-mode{overflow:hidden}
+    body.maintenance-mode *{visibility:hidden}
+    body.maintenance-mode::before{content:""; position:fixed; inset:0; background:#000; z-index:9999; visibility:visible}
