@@ -46,8 +46,21 @@
 
 /* Hero size overrides (mobile) */
 @media (max-width: 640px){
-  .hero{min-height:auto; overflow:hidden}
-  .hero .container{padding:24px 20px 44px; position:relative}
+  .hero{
+    min-height:calc(100vh - var(--nav-height, 72px));
+    min-height:calc(100dvh - var(--nav-height, 72px));
+    display:flex;
+    overflow:hidden;
+  }
+  .hero .container{
+    padding:24px 20px 44px;
+    position:relative;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    min-height:100%;
+  }
   .hero .container .network-card{position:absolute; inset:0; min-height:0; z-index:-1; opacity:.75; pointer-events:none}
   .hero .container .network-card::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(15,23,42,.12), transparent 55%)}
   .hero .container .network-canvas{position:absolute; inset:0; width:100%; height:100%}
@@ -55,7 +68,7 @@
   .cta{width:max-content}
 }
 @media (max-width: 480px){
-  .nav{padding:10px clamp(22px, 8vw, 34px); gap:10px}
+  .nav{padding:10px clamp(22px, 8vw, 34px); gap:10px; --nav-height:64px}
   .theme-toggle{width:34px; height:34px}
   .menu-toggle{width:38px; height:38px}
   .hero .container{padding:20px 16px 40px}
