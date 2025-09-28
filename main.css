@@ -41,7 +41,7 @@
     .container{max-width:var(--maxw); margin-inline:auto; padding:0 20px}
 
     /* Header */
-    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(10px); background:color-mix(in srgb, var(--bg) 70%, transparent); border-bottom:1px solid var(--border)}
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(10px); background:transparent; border-bottom:1px solid var(--border)}
     .nav{display:flex; align-items:center; justify-content:space-between; gap:18px; padding:14px clamp(12px, 4vw, 24px); position:relative}
     .brand{display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.2px; font-size:18px; color:var(--accent)}
     .brand .logo{width:40px; height:auto; display:block; filter:drop-shadow(0 6px 18px rgba(15,76,129,.25))}
