@@ -5,17 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Uplora — Software Engineering Studio</title>
   <meta name="description" content="Uplora designs and builds secure, high‑quality web and software products. See our work and contact us." />
-  <meta name="color-scheme" content="light dark">
+  <meta name="color-scheme" content="dark light">
   <script>
     // Set initial theme as early as possible to avoid flash
     (function(){
       try{
         var stored = localStorage.getItem('theme');
-        if (stored === 'dark'){
-          document.documentElement.setAttribute('data-theme','dark');
-        }else{
-          document.documentElement.setAttribute('data-theme','light');
-        }
+        var theme = stored === 'light' || stored === 'dark' ? stored : 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
       }catch(e){}
     })();
   </script>
@@ -116,7 +113,7 @@
         <div class="pillar reveal up">
           <div class="ring"><div class="inner" aria-hidden="true">
             <!-- Layers icon (filled) -->
-            <svg width="40" height="40" viewBox="0 0 24 24" aria-hidden="true" fill="#0f172a">
+            <svg width="40" height="40" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
               <rect x="7" y="7" width="10" height="10" rx="2"/>
               <rect x="4" y="4" width="10" height="10" rx="2" opacity=".55"/>
             </svg>
@@ -127,7 +124,7 @@
         <div class="pillar reveal up">
           <div class="ring"><div class="inner" aria-hidden="true">
             <!-- Team/users icon (filled) -->
-            <svg width="40" height="40" viewBox="0 0 24 24" aria-hidden="true" fill="#0f172a">
+            <svg width="40" height="40" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
               <circle cx="8" cy="9" r="2.6"/>
               <rect x="5" y="13" width="6" height="5" rx="2"/>
               <circle cx="16" cy="10" r="2.3" opacity=".7"/>
@@ -140,7 +137,7 @@
         <div class="pillar reveal up">
           <div class="ring"><div class="inner" aria-hidden="true">
             <!-- Bar chart icon (filled) -->
-            <svg width="40" height="40" viewBox="0 0 24 24" aria-hidden="true" fill="#0f172a">
+            <svg width="40" height="40" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
               <rect x="4" y="12" width="4" height="6" rx="1"/>
               <rect x="10" y="8" width="4" height="10" rx="1" opacity=".85"/>
               <rect x="16" y="5" width="4" height="13" rx="1" opacity=".7"/>
@@ -152,8 +149,8 @@
         <div class="pillar reveal up">
           <div class="ring"><div class="inner" aria-hidden="true">
             <!-- Shield check icon (filled) -->
-            <svg width="40" height="40" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 3l7 3v4c0 4.4-2.9 7.5-7 9-4.1-1.5-7-4.6-7-9V6l7-3z" fill="#0f172a"/>
+            <svg width="40" height="40" viewBox="0 0 24 24" aria-hidden="true" fill="none">
+              <path d="M12 3l7 3v4c0 4.4-2.9 7.5-7 9-4.1-1.5-7-4.6-7-9V6l7-3z" fill="currentColor"/>
               <path d="M9.2 12.6l1.9 1.9 3.9-3.9" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div></div>
