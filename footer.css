@@ -1,15 +1,1 @@
-    .site-footer{--footer-start:#14508f; --footer-end:#0b2f59; --footer-fg:#f1f6fc; background:linear-gradient(180deg, var(--footer-start) 0%, var(--footer-end) 100%); color:var(--footer-fg)}
-    .site-footer a{text-decoration:none; color:inherit}
-    .footer-top{padding:32px 0 8px}
-    .footer-row{display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap}
-    .footer-brand .name{font-weight:800; font-size:20px; color:inherit}
-    .footer-brand .tag{color:var(--footer-fg); margin-top:6px}
-    .footer-icons{display:flex; gap:10px}
-    .icon-btn{display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:10px; background:color-mix(in srgb, var(--footer-fg) 12%, transparent); border:1px solid color-mix(in srgb, var(--footer-fg) 26%, transparent); box-shadow:0 10px 24px rgba(2,6,23,.35); transition:transform .15s ease, background .2s ease; color:var(--footer-fg)}
-    .icon-btn:hover{background:color-mix(in srgb, var(--footer-fg) 18%, transparent); transform:translateY(-1px)}
-    .footer-divider{border:0; height:1px; background:var(--border); margin:14px 0 10px}
-    .footer-bottom{text-align:center; padding:12px 0 18px; color:inherit; font-size:14px}
-
-    /* Responsive */
-    /* Dark footer palette override */
-    :root[data-theme="dark"] .site-footer{--footer-start: color-mix(in srgb, var(--bg) 6%, #0f172a); --footer-end: color-mix(in srgb, var(--bg) 0%, #0b1220); --footer-fg:var(--fg); color:var(--fg);}
+/* Content temporarily removed. */
